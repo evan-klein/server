@@ -1,9 +1,9 @@
 {
 	log {
 		output file /var/log/caddy/{host}.log {
-			roll_size 1gb
-			roll_keep 1000
-			roll_keep_for 720h
+			roll_size 1000MiB
+			roll_keep 100
+			roll_keep_for 87600h
 		}
 	}
 }
