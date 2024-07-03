@@ -1,0 +1,13 @@
+@cache {
+	path *.css
+	path *.js
+	path *.jpeg
+	path *.jpg
+	path *.png
+	path *.gif
+	path *.ico
+	path *.svg
+	path *.pdf
+}
+
+header @cache Cache-Control "private, max-age=2678400"
