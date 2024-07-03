@@ -1,11 +1,1 @@
-{
-	log {
-		output file /var/log/caddy/{host}.log {
-			roll_size 1000MiB
-			roll_keep 100
-			roll_keep_for 87600h
-		}
-	}
-}
-
 import /etc/caddy/*.caddy

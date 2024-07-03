@@ -1,0 +1,27 @@
+file_server {
+	index index.php index.html index.htm
+}
+
+php_fastcgi unix//run/php/php7.4-fpm.sock
+#php_fastcgi 127.0.0.1:9000
+
+log {
+	output file /var/log/caddy/{host}.log {
+		roll_size 1000MiB
+		roll_keep 100
+		roll_keep_for 87600h
+	}
+}
+
+handle_errors 400 401 403 404 405 408 500 502 503 504 {
+	rewrite * /errors/{err.status_code}.html
+	file_server
+}
+
+header {
+	Strict-Transport-Security max-age=31536000;
+	X-Frame-Options SAMEORIGIN
+	-server
+}
+
+# TODO - php_status
