@@ -17,10 +17,10 @@ sudo ln -sfT /var/log/ $HOME/log
 
 # Install updates
 sudo apt-get -o Acquire::ForceIPv4=true update
-sudo apt-get upgrade -y
+sudo apt-get -y upgrade
 
 # Install and configure UFW
-sudo apt-get install -y ufw
+sudo apt-get -y install ufw
 sudo ufw default deny
 sudo ufw allow 22
 sudo ufw --force enable
