@@ -31,3 +31,7 @@ sudo timedatectl set-timezone $time_zone
 # Set hostname
 echo "$hostname" | sudo tee /etc/hostname
 sudo hostname -F /etc/hostname
+
+# /etc/hosts
+etc_hosts="127.0.0.1\t$fqdn $hostname"
+grep -qxF "$etc_hosts" /etc/hosts || echo "$etc_hosts" | sudo tee -a /etc/hosts
