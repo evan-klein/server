@@ -1,8 +1,8 @@
-php_fastcgi unix//run/php/php7.4-fpm.sock
-
 file_server {
 	index index.php index.html index.htm
 }
+
+php_fastcgi unix//run/php/php7.4-fpm.sock
 
 header {
 	Strict-Transport-Security max-age=31536000;
