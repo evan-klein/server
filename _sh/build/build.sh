@@ -18,3 +18,16 @@ sudo ln -sfT /var/log/ $HOME/log
 # Install updates
 sudo apt-get -o Acquire::ForceIPv4=true update
 sudo apt-get upgrade -y
+
+# Install and configure UFW
+sudo apt-get install -y ufw
+sudo ufw default deny
+sudo ufw allow 22
+sudo ufw --force enable
+
+# Set time zone
+sudo timedatectl set-timezone $time_zone
+
+# Set hostname
+echo "$hostname" | sudo tee /etc/hostname
+sudo hostname -F /etc/hostname
