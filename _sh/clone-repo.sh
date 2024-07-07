@@ -47,3 +47,13 @@ mv $tmp_dir $path_src
 
 # Create symlink
 ln -sfT $path_src $path_symlink
+
+# Delete old versions
+dirs=`find "$path_src_parent" -mindepth 1 -maxdepth 1 -type d -printf '%T@ %p\n' | sort -n`
+dirs_count=`echo "$dirs" | wc -l`
+if [ "$dirs_count" -gt 5 ]; then
+	echo "$dirs" | head -n $((dirs_count - 5)) | cut -d' ' -f2- | while read -r dir; do
+		rm -rf $dir
+		echo '❌ Deleted old version: $dir'
+	done
+fi
