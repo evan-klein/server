@@ -55,10 +55,11 @@ mv $tmp_dir $path_src
 # Create/update symlink?
 if $update_symlink ; then
 	ln -sfT $path_src $path_symlink
-	echo "✅ Symlink created/updated"
+	echo "✅ Symlink created/updated:"
 else
-	echo "⚠️ Symlink not created/updated:\n\tln -sfT $path_src $path_symlink"
+	echo "⚠️ Symlink not created/updated:"
 fi
+echo "\tln -sfT $path_src $path_symlink"
 
 # Delete old versions
 dirs=`find "$path_src_parent" -mindepth 1 -maxdepth 1 -type d -printf '%T@ %p\n' | sort -n`
