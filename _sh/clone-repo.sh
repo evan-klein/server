@@ -12,10 +12,10 @@ fi
 github_username="$1"
 github_repo_name="$2"
 
-update_symlink=false
+update_symlink=true
 if [ -n "$3" ]; then
-	if [ "$3" = "1" ] || [ "$3" = "true" ]; then
-		update_symlink=true
+	if [ "$3" = "0" ] || [ "$3" = "false" ]; then
+		update_symlink=false
 	fi
 fi
 
