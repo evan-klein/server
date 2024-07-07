@@ -66,6 +66,6 @@ dirs_count=`echo "$dirs" | wc -l`
 if [ "$dirs_count" -gt 5 ]; then
 	echo "$dirs" | head -n $((dirs_count - 5)) | cut -d' ' -f2- | while read -r dir; do
 		rm -rf $dir
-		echo '❌ Deleted old version: $dir'
+		echo "❌ Deleted old version: $dir"
 	done
 fi
