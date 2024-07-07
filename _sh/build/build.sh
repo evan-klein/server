@@ -35,3 +35,6 @@ sudo hostname -F /etc/hostname
 # /etc/hosts
 etc_hosts="127.0.0.1\t$fqdn $hostname"
 grep -qxF "$etc_hosts" /etc/hosts || echo "$etc_hosts" | sudo tee -a /etc/hosts
+
+# .nanorc
+sudo cp -f $server/cfg/.nanorc $HOME/.nanorc
