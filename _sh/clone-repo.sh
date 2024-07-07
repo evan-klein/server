@@ -55,14 +55,14 @@ mv $tmp_dir $path_src
 # on-clone.sh
 if [ -f "$path_src/on-clone.sh" ]; then
 	echo "✅ Running $path_src/on-clone.sh...\n"
-	sh $path_src/on-clone.sh
+	sh $path_src/on-clone.sh "$path_src" "$path_symlink"
 	echo "✅ $path_src/on-clone.sh finished\n"
 fi
 
 # _sh/on-clone.sh
 if [ -f "$path_src/_sh/on-clone.sh" ]; then
 	echo "✅ Running $path_src/_sh/on-clone.sh...\n"
-	sh $path_src/_sh/on-clone.sh
+	sh $path_src/_sh/on-clone.sh "$path_src" "$path_symlink"
 	echo "✅ $path_src/_sh/on-clone.sh finished\n"
 fi
 
