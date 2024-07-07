@@ -12,6 +12,13 @@ fi
 github_username="$1"
 github_repo_name="$2"
 
+update_symlink=false
+if [ -n "$3" ]; then
+	if [ "$3" = "1" ] || [ "$3" = "true" ]; then
+		update_symlink=true
+	fi
+fi
+
 tmp_dir=`mktemp -d`
 
 # Clone repo to temporary directory
@@ -45,8 +52,13 @@ mkdir -p $path_symlink_parent
 # Move repo
 mv $tmp_dir $path_src
 
-# Create symlink
-ln -sfT $path_src $path_symlink
+# Create/update symlink?
+if $update_symlink ; then
+	ln -sfT $path_src $path_symlink
+	echo "✅ Symlink created/updated"
+else
+	echo "⚠️ Symlink not created/updated:\n\tln -sfT $path_src $path_symlink"
+fi
 
 # Delete old versions
 dirs=`find "$path_src_parent" -mindepth 1 -maxdepth 1 -type d -printf '%T@ %p\n' | sort -n`
