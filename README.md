@@ -9,5 +9,5 @@ TODO
 #### Reload running configuration
 
 ```sh
-caddy reload
+caddy reload --config /etc/caddy/Caddyfile
 ```
