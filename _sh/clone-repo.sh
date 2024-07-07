@@ -52,6 +52,20 @@ mkdir -p $path_symlink_parent
 # Move repo
 mv $tmp_dir $path_src
 
+# on-clone.sh
+if [ -f "$path_src/on-clone.sh" ]; then
+	echo "✅ Running $path_src/on-clone.sh...\n"
+	sh $path_src/on-clone.sh
+	echo "✅ $path_src/on-clone.sh finished\n"
+fi
+
+# _sh/on-clone.sh
+if [ -f "$path_src/_sh/on-clone.sh" ]; then
+	echo "✅ Running $path_src/_sh/on-clone.sh...\n"
+	sh $path_src/_sh/on-clone.sh
+	echo "✅ $path_src/_sh/on-clone.sh finished\n"
+fi
+
 # Create/update symlink?
 if $update_symlink ; then
 	ln -sfT $path_src $path_symlink
