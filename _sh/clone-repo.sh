@@ -75,6 +75,20 @@ else
 fi
 echo "\tln -sfT $path_src $path_symlink"
 
+# on-clone-after-symlink.sh
+if [ -f "$path_src/on-clone-after-symlink.sh" ]; then
+	echo "✅ Running $path_src/on-clone-after-symlink.sh...\n"
+	sh $path_src/on-clone-after-symlink.sh "$path_src" "$path_symlink"
+	echo "✅ $path_src/on-clone-after-symlink.sh finished\n"
+fi
+
+# _sh/on-clone-after-symlink.sh
+if [ -f "$path_src/_sh/on-clone-after-symlink.sh" ]; then
+	echo "✅ Running $path_src/_sh/on-clone-after-symlink.sh...\n"
+	sh $path_src/_sh/on-clone-after-symlink.sh "$path_src" "$path_symlink"
+	echo "✅ $path_src/_sh/on-clone-after-symlink.sh finished\n"
+fi
+
 # Delete old versions
 dirs=`find "$path_src_parent" -mindepth 1 -maxdepth 1 -type d -printf '%T@ %p\n' | sort -n`
 dirs_count=`echo "$dirs" | wc -l`
