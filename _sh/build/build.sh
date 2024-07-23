@@ -44,3 +44,23 @@ sudo update-alternatives --set editor $default_editor
 
 # git
 sudo apt-get -y install git
+
+# Supervisor
+if $supervisor_enabled ; then
+	sudo apt-get -y install supervisor
+fi
+
+# Caddy web server
+if $caddy_enabled ; then
+	sudo apt-get -y install caddy
+fi
+
+# Utilities
+if $utilities_enabled ; then
+	sudo apt-get -y install curl ntp htop mtr-tiny
+fi
+
+# Reboot
+if $reboot ; then
+	sudo reboot
+fi
