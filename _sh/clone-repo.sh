@@ -1,5 +1,13 @@
 #!/bin/sh
 
+run_script_if(){
+	if [ -f "$1" ]; then
+		echo "✅ Running $1...\n"
+		sh "$1" "$path_src" "$path_symlink"
+		echo "✅ $1 finished\n"
+	fi
+}
+
 # Check for required arguments
 if [ -z "$1" ] || [ -z "$2" ]; then
 	echo '⚠️ Fatal error: required arguments missing\n'
@@ -53,18 +61,8 @@ mkdir -p $path_symlink_parent
 mv $tmp_dir $path_src
 
 # on-clone.sh
-if [ -f "$path_src/on-clone.sh" ]; then
-	echo "✅ Running $path_src/on-clone.sh...\n"
-	sh $path_src/on-clone.sh "$path_src" "$path_symlink"
-	echo "✅ $path_src/on-clone.sh finished\n"
-fi
-
-# _sh/on-clone.sh
-if [ -f "$path_src/_sh/on-clone.sh" ]; then
-	echo "✅ Running $path_src/_sh/on-clone.sh...\n"
-	sh $path_src/_sh/on-clone.sh "$path_src" "$path_symlink"
-	echo "✅ $path_src/_sh/on-clone.sh finished\n"
-fi
+run_script_if "$path_src/on-clone.sh"
+run_script_if "$path_src/_sh/on-clone.sh"
 
 # Create/update symlink?
 if $update_symlink ; then
@@ -76,18 +74,8 @@ fi
 echo "\tln -sfT $path_src $path_symlink"
 
 # on-clone-after-symlink.sh
-if [ -f "$path_src/on-clone-after-symlink.sh" ]; then
-	echo "✅ Running $path_src/on-clone-after-symlink.sh...\n"
-	sh $path_src/on-clone-after-symlink.sh "$path_src" "$path_symlink"
-	echo "✅ $path_src/on-clone-after-symlink.sh finished\n"
-fi
-
-# _sh/on-clone-after-symlink.sh
-if [ -f "$path_src/_sh/on-clone-after-symlink.sh" ]; then
-	echo "✅ Running $path_src/_sh/on-clone-after-symlink.sh...\n"
-	sh $path_src/_sh/on-clone-after-symlink.sh "$path_src" "$path_symlink"
-	echo "✅ $path_src/_sh/on-clone-after-symlink.sh finished\n"
-fi
+run_script_if "$path_src/on-clone-after-symlink.sh"
+run_script_if "$path_src/_sh/on-clone-after-symlink.sh"
 
 # Copy cron files?
 if [ -d "$path_symlink/cfg/cron.d" ]; then
