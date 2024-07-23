@@ -38,3 +38,9 @@ grep -qxF "$etc_hosts" /etc/hosts || echo "$etc_hosts" | sudo tee -a /etc/hosts
 
 # .nanorc
 sudo cp -f $server/cfg/.nanorc $HOME/.nanorc
+
+# Set default editor
+sudo update-alternatives --set editor $default_editor
+
+# git
+sudo apt-get -y install git
