@@ -89,6 +89,11 @@ if [ -f "$path_src/_sh/on-clone-after-symlink.sh" ]; then
 	echo "✅ $path_src/_sh/on-clone-after-symlink.sh finished\n"
 fi
 
+# Copy cron files?
+if [ -d "$path_symlink/cfg/cron.d" ]; then
+	sudo cp -f $path_symlink/cfg/cron.d/* /etc/cron.d/
+fi
+
 # Delete old versions
 dirs=`find "$path_src_parent" -mindepth 1 -maxdepth 1 -type d -printf '%T@ %p\n' | sort -n`
 dirs_count=`echo "$dirs" | wc -l`
