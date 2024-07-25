@@ -52,6 +52,8 @@ fi
 
 # Caddy web server
 if $caddy_enabled ; then
+	sudo ufw allow 80
+	sudo ufw allow 443
 	sudo apt-get -y install caddy
 fi
 
