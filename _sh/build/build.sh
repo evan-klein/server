@@ -57,6 +57,11 @@ if $caddy_enabled ; then
 	sudo apt-get -y install caddy
 fi
 
+# Node.js
+if $nodejs_enabled ; then
+	sudo apt-get -y install nodejs
+fi
+
 # Utilities
 if $utilities_enabled ; then
 	sudo apt-get -y install curl ntp htop mtr-tiny
