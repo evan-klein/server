@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# Download clone-repo.sh
+curl --silent --show-error https://raw.githubusercontent.com/evan-klein/server/master/_sh/clone-repo.sh > ~/.clone-repo.sh
+
+# Clone evan-klein/server
+sh ~/.clone-repo.sh evan-klein server
+
 . '/usr/local/lib/evan-klein/server/_sh/build/cfg-defaults.sh'
 . '/etc/evan-klein/server/cfg.sh'
 
@@ -87,6 +93,9 @@ if [ -e "$apt_daily_timer" ] || [ -e "$apt_daily_upgrade_timer" ] ; then
 		sudo systemctl restart apt-daily-upgrade.timer
 	fi
 fi
+
+# Clean up
+rm ~/.clone-repo.sh
 
 # Reboot
 if $reboot ; then
