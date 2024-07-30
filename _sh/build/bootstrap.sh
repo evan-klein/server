@@ -24,6 +24,8 @@ touch $log/bootstrap.log
 touch $log/build.log
 
 # Set permissions
-curl --silent --show-error https://raw.githubusercontent.com/evan-klein/server/master/_sh/reset-perms.sh > ~/reset-perms.sh
-sh ~/reset-perms.sh
-rm ~/reset-perms.sh
+curl --silent --show-error https://raw.githubusercontent.com/evan-klein/server/master/_sh/reset-perms.sh > ~/.reset-perms.sh
+sh ~/.reset-perms.sh
+
+# Clean up
+rm ~/.reset-perms.sh
