@@ -14,4 +14,8 @@ caddy_enabled=true
 nodejs_enabled=true
 utilities_enabled=true
 
+evan_bot_auto_reboot_enabled=true
+evan_bot_auto_reboot_cfg='/usr/local/lib/evan-klein/evan-bot-auto-reboot/cfg.json'
+evan_bot_auto_reboot_cron='/usr/local/lib/evan-klein/evan-bot-auto-reboot/cron'
+
 reboot=true
