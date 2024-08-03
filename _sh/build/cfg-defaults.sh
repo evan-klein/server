@@ -10,8 +10,11 @@ fail2ban_enabled=true
 fail2ban_jails='/usr/local/lib/evan-klein/server/cfg/fail2ban/*.local'
 
 supervisor_enabled=true
+
 caddy_enabled=true
+
 nodejs_enabled=true
+
 utilities_enabled=true
 
 apt_daily_timer='/usr/local/lib/evan-klein/server/cfg/systemd/apt-daily.timer'
