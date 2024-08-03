@@ -6,6 +6,9 @@ fqdn="$hostname.example.com"
 time_zone='America/Los_Angeles'
 default_editor='/bin/nano'
 
+fail2ban_enabled=true
+fail2ban_jails='/usr/local/lib/evan-klein/server/cfg/fail2ban/*.local'
+
 apt_daily_timer='/usr/local/lib/evan-klein/server/cfg/systemd/apt-daily.timer'
 apt_daily_upgrade_timer='/usr/local/lib/evan-klein/server/cfg/systemd/apt-daily-upgrade.timer'
 

@@ -45,6 +45,14 @@ sudo cp -f $server/cfg/.nanorc $HOME/.nanorc
 # Set default editor
 sudo update-alternatives --set editor $default_editor
 
+# fail2ban
+if $fail2ban_enabled; then
+	sudo apt-get -y install fail2ban
+	sudo cp -f "$fail2ban_jails" /etc/fail2ban/jail.d/
+	sudo systemctl enable fail2ban
+	sudo systemctl restart fail2ban
+fi
+
 # git
 sudo apt-get -y install git
 
