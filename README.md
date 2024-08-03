@@ -2,7 +2,7 @@
 
 Server build scripts and config files for a Ubuntu server.
 
-Compatible with Ubuntu Server 24.04 LTS or newer
+Compatible with Ubuntu Server 24.04 LTS or newer.
 
 ## DevOps cheat sheet
 
