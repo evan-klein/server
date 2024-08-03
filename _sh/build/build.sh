@@ -110,7 +110,7 @@ if [ -e "$apt_daily_timer" ] || [ -e "$apt_daily_upgrade_timer" ]; then
 	fi
 fi
 
-# Evan Bot auto reboot
+# Evan Bot server monitor
 if $evan_bot_server_monitor_enabled; then
 	sh ~/.clone-repo.sh evan-klein evan-bot-server-monitor
 
