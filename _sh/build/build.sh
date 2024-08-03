@@ -68,6 +68,17 @@ if $caddy_enabled; then
 	sudo usermod -aG caddy $user
 fi
 
+# PHP
+if $php_enabled; then
+	sudo apt-get -y install php-fpm php-cli php-mbstring php-intl php-curl php-json php-gd php-mysql
+
+	# PHP error log
+	sudo touch $php_error_log
+	sh $server/_sh/reset-perms.sh
+
+	sudo systemctl restart php8.3-fpm
+fi
+
 # Node.js
 if $nodejs_enabled; then
 	sudo apt-get -y install nodejs
