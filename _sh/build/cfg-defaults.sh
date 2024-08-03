@@ -23,8 +23,8 @@ utilities_enabled=true
 apt_daily_timer='/usr/local/lib/evan-klein/server/cfg/systemd/apt-daily.timer'
 apt_daily_upgrade_timer='/usr/local/lib/evan-klein/server/cfg/systemd/apt-daily-upgrade.timer'
 
-evan_bot_auto_reboot_enabled=true
-evan_bot_auto_reboot_cfg='/usr/local/lib/evan-klein/evan-bot-auto-reboot/cfg.json'
-evan_bot_auto_reboot_cron='/usr/local/lib/evan-klein/evan-bot-auto-reboot/cron'
+evan_bot_server_monitor_enabled=true
+evan_bot_server_monitor_cfg='/usr/local/lib/evan-klein/evan-bot-server-monitor/cfg.json'
+evan_bot_server_monitor_cron='/usr/local/lib/evan-klein/evan-bot-server-monitor/cron'
 
 reboot=true

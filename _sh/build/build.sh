@@ -111,17 +111,17 @@ if [ -e "$apt_daily_timer" ] || [ -e "$apt_daily_upgrade_timer" ]; then
 fi
 
 # Evan Bot auto reboot
-if $evan_bot_auto_reboot_enabled; then
-	sh ~/.clone-repo.sh evan-klein evan-bot-auto-reboot
+if $evan_bot_server_monitor_enabled; then
+	sh ~/.clone-repo.sh evan-klein evan-bot-server-monitor
 
 	# Copy cfg.json
-	if [ -e "$evan_bot_auto_reboot_cfg" ]; then
-		sudo cp -f "$evan_bot_auto_reboot_cfg" /etc/evan-klein/evan-bot-auto-reboot/cfg.json
+	if [ -e "$evan_bot_server_monitor_cfg" ]; then
+		sudo cp -f "$evan_bot_server_monitor_cfg" /etc/evan-klein/evan-bot-server-monitor/cfg.json
 	fi
 
 	# Install cron
-	if [ -e "$evan_bot_auto_reboot_cron" ]; then
-		sudo cp -f "$evan_bot_auto_reboot_cron" /etc/cron.d/
+	if [ -e "$evan_bot_server_monitor_cron" ]; then
+		sudo cp -f "$evan_bot_server_monitor_cron" /etc/cron.d/
 	fi
 fi
 
