@@ -22,12 +22,6 @@ sudo ln -sfT /var/log/ $HOME/log
 sudo apt-get -o Acquire::ForceIPv4=true update
 sudo apt-get -y upgrade
 
-# Install and configure UFW
-sudo apt-get -y install ufw
-sudo ufw default deny
-sudo ufw allow 22
-sudo ufw --force enable
-
 # Set time zone
 sudo timedatectl set-timezone $time_zone
 
@@ -44,6 +38,12 @@ sudo cp -f $server/cfg/.nanorc $HOME/.nanorc
 
 # Set default editor
 sudo update-alternatives --set editor $default_editor
+
+# Install and configure UFW
+sudo apt-get -y install ufw
+sudo ufw default deny
+sudo ufw allow 22
+sudo ufw --force enable
 
 # fail2ban
 if $fail2ban_enabled; then
