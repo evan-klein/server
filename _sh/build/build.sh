@@ -49,59 +49,59 @@ sudo update-alternatives --set editor $default_editor
 sudo apt-get -y install git
 
 # Supervisor
-if $supervisor_enabled ; then
+if $supervisor_enabled; then
 	sudo apt-get -y install supervisor
 fi
 
 # Caddy web server
-if $caddy_enabled ; then
+if $caddy_enabled; then
 	sudo ufw allow 80
 	sudo ufw allow 443
 	sudo apt-get -y install caddy
 fi
 
 # Node.js
-if $nodejs_enabled ; then
+if $nodejs_enabled; then
 	sudo apt-get -y install nodejs
 fi
 
 # Utilities
-if $utilities_enabled ; then
+if $utilities_enabled; then
 	sudo apt-get -y install curl ntp htop mtr-tiny
 fi
 
 # Configure unattended upgrades
-if [ -e "$apt_daily_timer" ] || [ -e "$apt_daily_upgrade_timer" ] ; then
-	if [ -e "$apt_daily_timer" ] ; then
+if [ -e "$apt_daily_timer" ] || [ -e "$apt_daily_upgrade_timer" ]; then
+	if [ -e "$apt_daily_timer" ]; then
 		sudo cp -f "$apt_daily_timer" /etc/systemd/system/apt-daily.timer
 		sudo chmod 644 /etc/systemd/system/apt-daily.timer
 	fi
-	if [ -e "$apt_daily_upgrade_timer" ] ; then
+	if [ -e "$apt_daily_upgrade_timer" ]; then
 		sudo cp -f "$apt_daily_upgrade_timer" /etc/systemd/system/apt-daily-upgrade.timer
 		sudo chmod 644 /etc/systemd/system/apt-daily-upgrade.timer
 	fi
 
 	sudo systemctl daemon-reload
 
-	if [ -e "$apt_daily_timer" ] ; then
+	if [ -e "$apt_daily_timer" ]; then
 		sudo systemctl restart apt-daily.timer
 	fi
-	if [ -e "$apt_daily_upgrade_timer" ] ; then
+	if [ -e "$apt_daily_upgrade_timer" ]; then
 		sudo systemctl restart apt-daily-upgrade.timer
 	fi
 fi
 
 # Evan Bot auto reboot
-if $evan_bot_auto_reboot_enabled ; then
+if $evan_bot_auto_reboot_enabled; then
 	sh ~/.clone-repo.sh evan-klein evan-bot-auto-reboot
 
 	# Copy cfg.json
-	if [ -e "$evan_bot_auto_reboot_cfg" ] ; then
+	if [ -e "$evan_bot_auto_reboot_cfg" ]; then
 		sudo cp -f "$evan_bot_auto_reboot_cfg" /etc/evan-klein/evan-bot-auto-reboot/cfg.json
 	fi
 
 	# Install cron
-	if [ -e "$evan_bot_auto_reboot_cron" ] ; then
+	if [ -e "$evan_bot_auto_reboot_cron" ]; then
 		sudo cp -f "$evan_bot_auto_reboot_cron" /etc/cron.d/
 	fi
 fi
@@ -110,6 +110,6 @@ fi
 rm ~/.clone-repo.sh
 
 # Reboot
-if $reboot ; then
+if $reboot; then
 	sudo reboot
 fi

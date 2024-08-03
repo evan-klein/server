@@ -65,7 +65,7 @@ run_script_if "$path_src/on-clone.sh"
 run_script_if "$path_src/_sh/on-clone.sh"
 
 # Create/update symlink?
-if $update_symlink ; then
+if $update_symlink; then
 	ln -sfT $path_src $path_symlink
 	echo "✅ Symlink created/updated:"
 else
