@@ -14,6 +14,7 @@ sudo apt-get -y install git
 # Create user
 sudo adduser --gecos "DevOps,,," $user
 echo "$user ALL=(ALL:ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$user
+sudo usermod -aG www-data $user
 
 # Make directories and files
 mkdir $ssh/

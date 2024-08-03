@@ -6,6 +6,8 @@ curl --silent --show-error https://raw.githubusercontent.com/evan-klein/server/m
 . '/usr/local/lib/evan-klein/server/_sh/build/cfg-defaults.sh'
 . '/etc/evan-klein/server/cfg.sh'
 
+user='devops'
+
 # Shortcuts
 lib='/usr/local/lib'
 lib_ek="$lib/evan-klein"
@@ -63,6 +65,7 @@ if $caddy_enabled; then
 	sudo ufw allow 80
 	sudo ufw allow 443
 	sudo apt-get -y install caddy
+	sudo usermod -aG caddy $user
 fi
 
 # Node.js
