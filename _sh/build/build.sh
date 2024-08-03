@@ -53,9 +53,6 @@ if $fail2ban_enabled; then
 	sudo systemctl restart fail2ban
 fi
 
-# git
-sudo apt-get -y install git
-
 # Supervisor
 if $supervisor_enabled; then
 	sudo apt-get -y install supervisor
