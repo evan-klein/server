@@ -13,6 +13,9 @@ supervisor_enabled=true
 
 caddy_enabled=true
 
+php_enabled=true
+php_error_log='/var/log/php-error.log'
+
 nodejs_enabled=true
 
 utilities_enabled=true
