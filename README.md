@@ -1,10 +1,8 @@
 # Server
 
-TODO
+Server build scripts and config files for a Ubuntu server.
 
-## Requirements
-
-- [Ubuntu Server v24.04+](https://ubuntu.com/download/server)
+Compatible with Ubuntu Server 24.04 LTS or newer
 
 ## DevOps cheat sheet
 
