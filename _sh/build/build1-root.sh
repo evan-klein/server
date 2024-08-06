@@ -21,7 +21,6 @@ mkdir $ssh/
 mkdir -p /etc/evan-klein/server/
 mkdir $log/
 touch $log/server.log
-touch $log/bootstrap.log
 touch $log/build.log
 
 # Set permissions
