@@ -21,7 +21,7 @@ mkdir $ssh/
 mkdir -p /etc/evan-klein/server/
 mkdir $log/
 touch $log/server.log
-touch $log/build.log
+touch $log/build2-devops.log
 
 # Set permissions
 curl --silent --show-error https://raw.githubusercontent.com/evan-klein/server/master/_sh/reset-perms.sh > ~/.reset-perms.sh
